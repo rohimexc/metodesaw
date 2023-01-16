@@ -1,0 +1,66 @@
+{% extends './index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Hasil Analisa</h1>
+    
+
+    <!-- DataTales Example -->
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Hasil Analisa</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>NISN</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Rangking</th>
+                            <th>Poin</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nama</th>
+                            <th>NISN</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Rangking</th>
+                            <th>Poin</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for data in tabel %}
+                        <tr>
+                            <td>{{data.NISN.Nama}}</td>
+                            <td>{{data.NISN.NISN}}</td>
+                            <td>{{data.NISN.jenis_kelamin}}</td>
+                            <td>{{data.Rangking}}</td>
+                            <td>{{data.Poin}}</td>
+                         
+                            
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+
+{% endblock content %}

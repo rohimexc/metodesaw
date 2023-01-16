@@ -1,0 +1,36 @@
+{%if page == 'login'%}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Masukkan Username"/>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Masukkan Password"/>
+        <input type="submit" value="login" />
+    </form>
+    <p>Belum memiliki akun?</p>
+    <a href="{% url 'register' %}">Register Here</a>
+
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    
+</div>
+{% else %}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="register" />
+    </form>
+    <p>Sudah memiliki akun?</p>
+    <a href="{% url 'login' %}">Login Here</a>
+
+</div>
+{% endif %}

@@ -1,0 +1,54 @@
+{% include 'navbar.html' %}
+
+<style>
+    .home-container{
+       display:grid;
+       grid-template-columns: 1fr 5fr;
+
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<div class="home-container">
+    <div>
+        <h3>Browse Topics</h3>
+        <hr>
+        <div>
+            <a href="{% url 'home' %}">All</a>
+        </div>
+        {% for c in topic %}
+        
+        <div>
+            <a href="{% url 'home' %}?q={{c.name}}">{{c.name}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <h1>Nama yang tinggal di Kos</h1>
+
+        <h4>{{room_count}} room</h4>
+        <a href="{% url 'createForm' %}">Create</a>
+        <div>
+            
+            {% for a in rooms %}
+            {%if request.user == a.host%}
+            <a href="{% url 'updateForm' a.id %}">Edit</a>
+            <a href="{% url 'deleteForm' a.id %}">Delete</a>
+            {%endif%}
+            <p>{{a.id}}. <a href="{% url 'room' a.id %}">{{a.name}}</a></p>
+            <small>{{a.topic.name}}</small>
+            <hr>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

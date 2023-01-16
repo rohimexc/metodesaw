@@ -1,0 +1,75 @@
+{% extends './index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Jumlah Tanggungan Orang Tua</h1>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tambah Jumlah Tanggungan Orang Tua</h6>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'addjmltgortu' %}" role="button" aria-pressed="true" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus" aria-hidden="true"></i>  Tambah Jumlah Tanggungan Orang Tua</a>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Jumlah Tanggungan Orang Tua</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Bobot</th>
+                            <th>Aksi</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Bobot</th>
+                            <th>Aksi</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for data in tabel %}
+                        <tr>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.bobot}}</td>
+
+                        
+                            <th width="17%">
+                                <div class="row">
+                                    <a href="{% url 'updatejmltgortu' data.id %}" class="btn btn-success btn-sm active ml-3" role="button" aria-pressed="true">Update</a>
+                                    <a href="{% url 'deletejmltgortu' data.id %}" class="btn btn-danger btn-sm active ml-3" role="button" aria-pressed="true">Delete</a>
+                                </div>
+                            </th>
+
+                            
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+
+{% endblock content %}
